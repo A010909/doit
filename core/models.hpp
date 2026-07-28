@@ -22,11 +22,15 @@ public:
     Task();
 
     // Functions
-    void create_task(int i);
+    void create_task(int i, std::string t_name, std::string t_desc, int p, bool s, int d, int m, int y);
     void task_done();
     void task_undone();
-    void edit_priority();
-    void display_task() const;
+    void edit_priority(int p);
+    int get_id() const;
+    std::string get_task() const;
+    std::string get_desc() const;
+    int get_priority() const;
+    std::string get_status() const;
+    void get_date() const;
 };
-
 #endif
