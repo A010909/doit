@@ -1,15 +1,23 @@
 CC = g++
-
 CFLAGS = -Wall -g
 
 TARGET = doit
 
-SOURCES = core/main.cpp core/models.cpp core/models.hpp
+SOURCES = main.cpp models.cpp 
+
+OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
+
+%.o: %.cpp core/models.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Run target for quick testing
+run: $(TARGET)
+	./$(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) core/*.o

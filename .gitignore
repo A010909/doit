@@ -2,3 +2,4 @@ TEMP.md
 *.exe
 *.out
 doit
+*.o

@@ -11,20 +11,27 @@ std::string Task::boolStatus_to_stringStatus() const
 
 std::string Task::intPriority_to_stringPriority() const
 {
-    if (priority == 1)
-        return "high";
-    else if (priority == 2)
+    switch (priority)
+    {
+    case 1:
+        return "High";
+    case 2:
         return "Medium";
-    else
+    case 3:
         return "Low";
+    default:
+        return "None";
+    }
 }
 
 // Basic constructor to ensure safe default values
-Task::Task() : id(0), task(""), desc(""), priority(3), status(false), day(1), month(1), year(0) {};
+// Parameterized constructor using an initializer list
+Task::Task(int i, const std::string &t_name, const std::string &t_desc, int p, bool s, int d, int m, int y)
+    : id(i), task(t_name), desc(t_desc), priority(p), status(s), day(d), month(m), year(y) {}
 
-void Task::create_task(int i, std::string t_name, std::string t_desc, int p, bool s, int d, int m, int y)
+void Task::create_task(int i, std::string &t_name, std::string &t_desc, int p, bool s, int d, int m, int y)
 {
-    id = 1;
+    id = i;
     task = t_name;
     desc = t_desc;
     priority = p;
@@ -77,7 +84,7 @@ std::string Task::get_status() const
     return boolStatus_to_stringStatus();
 }
 
-void Task::get_date() const
+std::string Task::get_date() const
 {
-    std::cout << day << "-" << month << "-" << year << std::endl;
+    return std::to_string(day) + "-" + std::to_string(month) + "-" + std::to_string(year);
 }

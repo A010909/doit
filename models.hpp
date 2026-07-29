@@ -20,18 +20,19 @@ private:
 
 public:
     // Constructor
-    Task();
+    Task(int i, const std::string &t_name, const std::string &t_desc, int p, bool s, int d, int m, int y);
 
     // Functions
-    void create_task(int i, std::string t_name, std::string t_desc, int p, bool s, int d, int m, int y);
+    void create_task(int i, std::string &t_name, std::string &t_desc, int p, bool s, int d, int m, int y);
     void task_done();
     void task_undone();
     void edit_priority(int p);
     int get_id() const;
+    // getters for data display
     std::string get_task() const;
     std::string get_desc() const;
     std::string get_priority() const;
     std::string get_status() const;
-    void get_date() const;
+    std::string get_date() const;
 };
 #endif

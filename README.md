@@ -16,7 +16,9 @@ A highly customizable, feature rich, TUI Based, "to do app" to organize your lif
 - Master database
 - and many many more features to come along.
 
-## Development Process Tracking
+### Development Process Tracking
 
-- [ ] Make the Core engine in C++ (CRUD)
-- [ ] Implement Makefile for easier compilation
+## CORE ENGINE DEVELOPMENT
+
+- [x] Add task feature
+- [x] Implement Makefile for easier compilation
