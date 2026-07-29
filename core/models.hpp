@@ -16,6 +16,7 @@ private:
 
     // Helper - Private
     std::string boolStatus_to_stringStatus() const;
+    std::string intPriority_to_stringPriority() const;
 
 public:
     // Constructor
@@ -29,7 +30,7 @@ public:
     int get_id() const;
     std::string get_task() const;
     std::string get_desc() const;
-    int get_priority() const;
+    std::string get_priority() const;
     std::string get_status() const;
     void get_date() const;
 };

@@ -1,4 +1,4 @@
-#include <models.hpp>
+#include "models.hpp"
 
 // converts integer status to string status
 std::string Task::boolStatus_to_stringStatus() const
@@ -9,12 +9,22 @@ std::string Task::boolStatus_to_stringStatus() const
         return "Pending";
 }
 
+std::string Task::intPriority_to_stringPriority() const
+{
+    if (priority == 1)
+        return "high";
+    else if (priority == 2)
+        return "Medium";
+    else
+        return "Low";
+}
+
 // Basic constructor to ensure safe default values
 Task::Task() : id(0), task(""), desc(""), priority(3), status(false), day(1), month(1), year(0) {};
 
 void Task::create_task(int i, std::string t_name, std::string t_desc, int p, bool s, int d, int m, int y)
 {
-    id = i + 1;
+    id = 1;
     task = t_name;
     desc = t_desc;
     priority = p;
@@ -57,9 +67,9 @@ std::string Task::get_desc() const
     return desc;
 }
 
-int Task::get_priority() const
+std::string Task::get_priority() const
 {
-    return priority;
+    return intPriority_to_stringPriority();
 }
 
 std::string Task::get_status() const

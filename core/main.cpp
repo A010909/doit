@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 #include "models.hpp"
+
 using namespace std;
 
 int main()
 {
     // Initializing temporary variables
-    int i;
     std::string t_name, t_desc;
     int p;
     bool s;
@@ -18,7 +18,8 @@ int main()
     Task temp;
 
     cout << "1. Create Task" << endl
-         << "2. Display Task : " << endl;
+         << "2. Display Task" << endl
+         << "Enter your choice : " << endl;
     cin >> choice;
 
     switch (choice)
@@ -45,10 +46,10 @@ int main()
         cin >> d >> sep1 >> m >> sep2 >> y;
         cin.ignore();
 
-        temp.create_task(i, t_name, t_desc, p, s, d, m, y);
+        temp.create_task((task_list.size() + 1), t_name, t_desc, p, s, d, m, y);
         task_list.push_back(temp);
     case 2:
-        for (int i = 0; i < task_list.size(); i++)
+        for (long unsigned int i = 0; i < task_list.size(); i++)
         {
             cout << "-------------------------------------------------------------------------" << endl
                  << "TASK ID : " << task_list[i].get_id() << endl
