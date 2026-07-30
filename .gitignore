@@ -1,5 +1,4 @@
 TEMP.md
-*.exe
-*.out
-doit
-*.o
+build/
+bin/
+data/

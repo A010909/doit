@@ -1,23 +1,42 @@
-CC = g++
-CFLAGS = -Wall -g
+# Compiler settings
+CXX = g++
+CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
 
-TARGET = doit
+# Directory structure
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
+BIN_DIR = bin
 
-SOURCES = main.cpp models.cpp 
+# Final executable name
+TARGET = $(BIN_DIR)/doit
 
-OBJECTS = $(SOURCES:.cpp=.o)
+# Automatically find all .cpp files in the src directory
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
-all: $(TARGET)
+# Generate the .o object file names in the build directory
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
+# Default target when you just type 'make'
+all: directories $(TARGET)
 
-%.o: %.cpp core/models.hpp
-	$(CC) $(CFLAGS) -c $< -o $@
+# Rule to link all object files into the final executable
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+	@echo "Build successful! Run with ./$(TARGET)"
 
-# Run target for quick testing
-run: $(TARGET)
-	./$(TARGET)
+# Rule to compile each .cpp file into a .o file
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Create necessary directories if they don't exist
+directories:
+	@mkdir -p $(BUILD_DIR) $(BIN_DIR) data
+
+# Clean up build artifacts
 clean:
-	rm -f $(TARGET) core/*.o
+	rm -rf $(BUILD_DIR)/*.o $(BIN_DIR)/doit
+	@echo "Cleaned build and bin directories."
+
+# Mark rules that don't represent physical files as PHONY
+.PHONY: all clean directories

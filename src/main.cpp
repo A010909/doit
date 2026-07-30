@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <limits> // for numeric limits and checking
 #include "models.hpp"
 
 using namespace std;
@@ -11,7 +10,6 @@ int main()
     std::string t_name, t_desc;
     int p;
     bool s;
-    int d, m, y;
 
     vector<Task> task_list;
 
@@ -49,27 +47,19 @@ int main()
             cout << "Status(0.Pending/1.Done) : ";
             cin >> s;
 
-            // Getting date
-            cout << "Date (DD-MM-YYYY or DD/MM/YYYY) : ";
-            char sep1, sep2;
-            cin >> d >> sep1 >> m >> sep2 >> y;
-            cin.ignore();
-
-            task_list.emplace_back((task_list.size() + 1), t_name, t_desc, p, s, d, m, y);
-
-            cout << "+++++++++++++++++++++++++++++++++++++++" << endl;
+            task_list.emplace_back((task_list.size() + 1), t_name, t_desc, p, s);
             break;
 
         case 2:
             cout << "=-=-=-=-=-=-=-=-TASKS-=-=-=-=-=-=-=-=" << endl;
-            for (int i = 0; i < task_list.size(); i++)
+            for (size_t i = 0; i < task_list.size(); i++)
             {
                 cout << "---------------------------------------" << endl
-                     << "TASK ID : " << task_list[i].get_id() << endl
-                     << task_list[i].get_task() << "-->" << task_list[i].get_desc() << endl
-                     << "Priority : " << task_list[i].get_priority() << endl
-                     << "Status : " << task_list[i].get_status() << endl
-                     << "Date : " << task_list[i].get_date() << endl;
+                     << task_list[i].get_task() << " --> " << task_list[i].get_desc() << endl
+                     << " ==> TASK ID : " << task_list[i].get_id() << endl // Will be removed in future(after adding searching) as I dont intend to show task id to user.
+                     << " ==> Priority : " << task_list[i].get_priority() << endl
+                     << " ==> Status : " << task_list[i].get_status() << endl
+                     << " ==> Date : " << task_list[i].get_date() << " " << task_list[i].get_time() << endl;
                 cout << "---------------------------------------" << endl;
             }
             break;
