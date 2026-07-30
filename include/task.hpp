@@ -2,7 +2,6 @@
 #define MODELS_HPP
 
 #pragma once
-#include <iostream>
 #include <string>
 
 // Task class for single to do stackings ---
@@ -13,8 +12,7 @@ private:
     std::string task, desc;
     int priority;
     bool status;
-    int day, month, year;
-    int hour, min;
+    std::string date_time;
 
     // Helper - Private
     std::string boolStatus_to_stringStatus() const;
@@ -28,15 +26,14 @@ public:
     void task_done();
     void task_undone();
     void edit_priority(int p);
-    int get_id() const;
 
     // getters for data display
+    int get_id() const;
     std::string get_task() const;
     std::string get_desc() const;
     std::string get_priority() const;
     std::string get_status() const;
-    std::string get_date() const;
-    std::string get_time() const;
+    std::string get_date_time() const;
 };
 
 #endif

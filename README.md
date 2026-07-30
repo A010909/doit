@@ -18,7 +18,8 @@ A highly customizable, feature rich, TUI Based, "to do app" to organize your lif
 
 ### Development Process Tracking
 
-## CORE ENGINE DEVELOPMENT
-
 - [x] Add task feature
 - [x] Implement Makefile for easier compilation
+- [x] Automatic Date and time
+- [ ] Input error preventions and handling
+- [ ] New Class -> Habit

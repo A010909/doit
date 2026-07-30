@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "models.hpp"
+#include "task.hpp"
 
 using namespace std;
 
@@ -59,7 +59,7 @@ int main()
                      << " ==> TASK ID : " << task_list[i].get_id() << endl // Will be removed in future(after adding searching) as I dont intend to show task id to user.
                      << " ==> Priority : " << task_list[i].get_priority() << endl
                      << " ==> Status : " << task_list[i].get_status() << endl
-                     << " ==> Date : " << task_list[i].get_date() << " " << task_list[i].get_time() << endl;
+                     << " ==> Date : " << task_list[i].get_date_time() << endl;
                 cout << "---------------------------------------" << endl;
             }
             break;
