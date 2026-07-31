@@ -1,12 +1,9 @@
-#ifndef UTILS_HPP
-#define UTILS_HPP
-
+// A utitlity file for gloabal functions 
 #pragma once
 #include <string>
 
 namespace TimeUtils
 {
-    std::string save_date_time();
+    std::string get_date();
+    std::string get_time();
 }
-
-#endif

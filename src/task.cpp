@@ -7,6 +7,7 @@ std::string Task::boolStatus_to_stringStatus() const
     return (status == true) ? "Done" : "Pending";
 }
 
+// converts integer priority to string priority
 std::string Task::intPriority_to_stringPriority() const
 {
     switch (priority)
@@ -23,11 +24,10 @@ std::string Task::intPriority_to_stringPriority() const
 }
 
 // Basic constructor to ensure safe default values
-// Parameterized constructor using an initializer list
 Task::Task(int i, const std::string &t_name, const std::string &t_desc, int p, bool s)
     : id(i), task(t_name), desc(t_desc), priority(p), status(s)
 {
-    date_time = TimeUtils::save_date_time();
+    date_time = TimeUtils::get_date() + " , " + TimeUtils::get_time();
 }
 
 // If task is done
@@ -48,6 +48,7 @@ void Task::edit_priority(int p)
     priority = p;
 }
 
+// getters for displaying
 int Task::get_id() const
 {
     return id;

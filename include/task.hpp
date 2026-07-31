@@ -1,6 +1,4 @@
-#ifndef MODELS_HPP
-#define MODELS_HPP
-
+// Daily to do tasks.
 #pragma once
 #include <string>
 
@@ -35,5 +33,3 @@ public:
     std::string get_status() const;
     std::string get_date_time() const;
 };
-
-#endif
