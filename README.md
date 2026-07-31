@@ -76,7 +76,7 @@ _(Note for Windows users: It is recommended to run this using WSL, MSYS2, or Git
 Open your terminal and clone the project to your local machine:
 
 ```bash
-git clone [https://github.com/A010909/doit.git](https://github.com/A010909/doit.git)
+git clone https://github.com/A010909/doit.git
 cd doit
 ```
 
