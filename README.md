@@ -35,6 +35,7 @@ Doit is currently in active development. Planned features include:
 - [x] New Feature -> Habit
 - [x] A scalable, modular UI with separate task and habit dashboards.
 - [x] Added namespace -> TimeUtilities (for gloabl functions needed by every task)
+- [x] New feature -> Goals
 
 ---
 
@@ -48,10 +49,13 @@ doit/
 ├── include/         # Header files (.hpp)
 │   ├── task.hpp
 │   ├── habits.hpp
+│   ├── goals.hpp
 │   └── utils.hpp
 └── src/             # Source code (.cpp)
     ├── main.cpp
+    ├── goals.cpp
     ├── task.cpp
+    ├── utils.cpp
     └── habits.cpp
 
 ---
@@ -68,8 +72,6 @@ Before you begin, ensure you have the following installed on your system:
 - **Git** (to clone the repository)
 - **A C++ Compiler** (like `g++` or `clang` with C++17 support)
 - **Make** (to automate the build process)
-
-_(Note for Windows users: It is recommended to run this using WSL, MSYS2, or Git Bash to fully support the Makefile and terminal environment)._
 
 ### 1. Clone the Repository
 
