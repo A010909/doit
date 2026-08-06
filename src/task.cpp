@@ -7,46 +7,23 @@ std::string Task::boolStatus_to_stringStatus() const
     return (status == true) ? "Done" : "Pending";
 }
 
-// converts integer priority to string priority
-std::string Task::intPriority_to_stringPriority() const
-{
-    switch (priority)
-    {
-    case 1:
-        return "High";
-    case 2:
-        return "Medium";
-    case 3:
-        return "Low";
-    default:
-        return "None";
-    }
-}
-
 // Basic constructor to ensure safe default values
-Task::Task(int i, const std::string &t_name, const std::string &t_desc, int p, bool s)
-    : id(i), task(t_name), desc(t_desc), priority(p), status(s)
+Task::Task(int i, const std::string &t_name, const std::string &t_desc)
+    : id(i), task(t_name), desc(t_desc), status(0)
 {
     date_time = TimeUtils::get_date() + " , " + TimeUtils::get_time();
 }
 
 // If task is done
-void Task::task_done()
+void Task::log_task(bool log)
 {
-    status = true;
+    status = log;
 }
 
-// If user needs to uncheck the done task
-void Task::task_undone()
-{
-    status = false;
-}
-
-// If user needs to edit the priority
-void Task::edit_priority(int p)
-{
-    priority = p;
-}
+// void Task::delete_task(int i)
+// {
+//  INCOMING FEATURE
+// }
 
 // getters for displaying
 int Task::get_id() const
@@ -62,11 +39,6 @@ std::string Task::get_task() const
 std::string Task::get_desc() const
 {
     return desc;
-}
-
-std::string Task::get_priority() const
-{
-    return intPriority_to_stringPriority();
 }
 
 std::string Task::get_status() const

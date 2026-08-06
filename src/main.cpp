@@ -30,7 +30,7 @@ int main()
              << "1. Task Centre" << endl
              << "2. Habit Centre " << endl
              << "3. Goals Centre " << endl
-             << "3. Exit app" << endl
+             << "4. Exit app" << endl
              << "Enter your choice : ";
         cin >> choice1;
 
@@ -48,8 +48,9 @@ int main()
                      << "TASK CENTRE" << endl
                      << "+++++++++++++++++++++++++++++++++++++++" << endl
                      << "1. Create Task" << endl
-                     << "2. Display Task" << endl
-                     << "3. Return to menu" << endl
+                     << "2. Edit Task Status" << endl
+                     << "3. Display Task" << endl
+                     << "4. Return to menu" << endl
                      << "Enter your choice : ";
                 cin >> choice2;
 
@@ -63,28 +64,31 @@ int main()
                     cout << "Description : ";
                     getline(cin, desc);
 
-                    cout << "Priority(1-3,high-low) : ";
-                    cin >> p;
-
-                    cout << "Status(0.Pending/1.Done) : ";
-                    cin >> s;
-
-                    task_list.emplace_back((task_list.size() + 1), name, desc, p, s);
+                    task_list.emplace_back((task_list.size() + 1), name, desc);
                     break;
                 case 2:
+                    cout << "=-=-=-=-=-=-=-=-EDIT TASK STATUS-=-=-=-=-=-=-=-=" << endl;
+                    for (size_t i = 0; i < task_list.size(); i++)
+                        cout << i + 1 << ". " << task_list[i].get_task() << endl;
+                    cout << "Select task to edit : ";
+                    cin >> p;
+                    cout << "Status(1/0) : ";
+                    cin >> s;
+                    task_list[p - 1].log_task(s);
+                    break;
+                case 3:
                     cout << "=-=-=-=-=-=-=-=-TASKS DISPLAY-=-=-=-=-=-=-=-=" << endl;
                     for (size_t i = 0; i < task_list.size(); i++)
                     {
                         cout << "---------------------------------------" << endl
                              << task_list[i].get_task() << " --> " << task_list[i].get_desc() << endl
                              << " ==> Task ID : " << task_list[i].get_id() << endl // Will be removed in future(after adding searching) as I dont intend to show task id to user.
-                             << " ==> Priority : " << task_list[i].get_priority() << endl
                              << " ==> Status : " << task_list[i].get_status() << endl
                              << " ==> Date : " << task_list[i].get_date_time() << endl;
                         cout << "---------------------------------------" << endl;
                     }
                     break;
-                case 3:
+                case 4:
                     cout << "Going back to menu";
                     exit = true;
                     break;
