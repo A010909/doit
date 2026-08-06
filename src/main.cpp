@@ -182,8 +182,9 @@ int main()
                      << "GOALS CENTRE" << endl
                      << "+++++++++++++++++++++++++++++++++++++++" << endl
                      << "1. Create Goal" << endl
-                     << "2. Goals Dashboard" << endl
-                     << "3. Return to menu" << endl
+                     << "2. Edit Status" << endl
+                     << "3. Goals Dashboard" << endl
+                     << "4. Return to menu" << endl
                      << "Enter your choice : ";
                 cin >> choice2;
 
@@ -197,6 +198,16 @@ int main()
                     goals_list.emplace_back((goals_list.size() + 1), name);
                     break;
                 case 2:
+                    cout << "=-=-=-=-=-=-=-=-EDIT STATUS-=-=-=-=-=-=-=-=" << endl;
+                    for (size_t i = 0; i < goals_list.size(); i++)
+                        cout << i + 1 << ". " << goals_list[i].get_goal() << endl;
+                    cout << "Select : ";
+                    cin >> p;
+                    cout << "Status(1/0) : ";
+                    cin >> s;
+                    goals_list[p - 1].edit_status(s);
+                    break;
+                case 3:
                     cout << "=-=-=-=-=-=-=-=-GOALS DASHBOARD-=-=-=-=-=-=-=-=" << endl;
                     for (size_t i = 0; i < goals_list.size(); i++)
                     {
@@ -207,7 +218,7 @@ int main()
                              << "---------------------------------------" << endl;
                     }
                     break;
-                case 3:
+                case 4:
                     cout << "Going back to menu";
                     exit = true;
                     break;
