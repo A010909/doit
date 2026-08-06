@@ -116,8 +116,9 @@ int main()
                      << "HABIT CENTRE" << endl
                      << "+++++++++++++++++++++++++++++++++++++++" << endl
                      << "1. Create Habit" << endl
-                     << "2. Display Display" << endl
-                     << "3. Return to menu" << endl
+                     << "2. Log Habit" << endl
+                     << "3. Habit Display" << endl
+                     << "4. Return to menu" << endl
                      << "Enter your choice : ";
                 cin >> choice2;
 
@@ -131,6 +132,16 @@ int main()
                     habit_list.emplace_back((habit_list.size() + 1), name);
                     break;
                 case 2:
+                    cout << "=-=-=-=-=-=-=-=-LOG HABIT-=-=-=-=-=-=-=-=" << endl;
+                    for (size_t i = 0; i < habit_list.size(); i++)
+                        cout << i + 1 << ". " << habit_list[i].get_name() << endl;
+                    cout << "Select habit to log : ";
+                    cin >> p;
+                    cout << "Status(1/0) : ";
+                    cin >> s;
+                    habit_list[p - 1].log_habit(s);
+                    break;
+                case 3:
                     cout << "=-=-=-=-=-=-=-=-HABIT DISPLAY-=-=-=-=-=-=-=-=" << endl;
                     for (size_t i = 0; i < habit_list.size(); i++)
                     {
@@ -144,7 +155,7 @@ int main()
                         cout << "---------------------------------------" << endl;
                     }
                     break;
-                case 3:
+                case 4:
                     cout << "Going back to menu";
                     exit = true;
                     break;
